@@ -1,0 +1,31 @@
+<div id="suppercontainer">
+  <div id="container">
+    <div class="screen">
+      <span class="overlay">{{ result }}</span>
+      <span class="input">{{ currentNumber }}</span>
+      <span class="input">{{ operator }}</span>
+      <span class="input">{{ previousNumber }}</span>
+    </div>
+    <div class="keyboard">
+      <button class="item item1" (click)="enterOperator('AC')">AC</button>
+      <button class="item item2">DEL</button>
+      <button class="item item3" (click)="enterOperator('+')">+</button>
+      <button class="item item4" (click)="enterNumber('7')">7</button>
+      <button class="item item5" (click)="enterNumber('8')">8</button>
+      <button class="item item6" (click)="enterNumber('9')">9</button>
+      <button class="item item7" (click)="enterOperator('-')">-</button>
+      <button class="item item8" (click)="enterNumber('4')">4</button>
+      <button class="item item9" (click)="enterNumber('5')">5</button>
+      <button class="item item10" (click)="enterNumber('6')">6</button>
+      <button class="item item11" (click)="enterOperator('*')">*</button>
+      <button class="item item12" (click)="enterNumber('1')">1</button>
+      <button class="item item13" (click)="enterNumber('2')">2</button>
+      <button class="item item14" (click)="enterNumber('3')">3</button>
+      <button class="item item15" (click)="enterOperator('/')">/</button>
+      <button class="item item16" (click)="enterNumber('0')">0</button>
+      <button class="item item17" (click)="enterNumber('00')">00</button>
+      <button class="item item18" (click)="enterOperator('.')">.</button>
+      <button class="item item19">=</button>
+    </div>
+  </div>
+</div>
