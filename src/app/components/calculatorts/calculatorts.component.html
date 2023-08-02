@@ -1,0 +1,137 @@
+<!-- <div id="suppercontainer">
+  <h1>Máy tính bà bán cá gần nhà Huy</h1>
+  <div id="container">
+    <div class="screen">
+      <span>{{ currentNumber }}</span>
+      <span>{{ operator }}</span>
+      <span>{{ previousNumber }}</span>
+      <span>{{ result }}</span>
+    </div>
+    <div class="keyboard">
+      <button class="item item1" (click)="enterOperator('AC')">AC</button>
+      <button class="item item2" (click)="enterOperator('DEL')">DEL</button>
+      <button class="item item3" (click)="enterOperator('+')">+</button>
+      <button class="item item4" (click)="enterNumber('7')">7</button>
+      <button class="item item5" (click)="enterNumber('8')">8</button>
+      <button class="item item6" (click)="enterNumber('9')">9</button>
+      <button class="item item7" (click)="enterOperator('-')">-</button>
+      <button class="item item8" (click)="enterNumber('4')">4</button>
+      <button class="item item9" (click)="enterNumber('5')">5</button>
+      <button class="item item10" (click)="enterNumber('6')">6</button>
+      <button class="item item11" (click)="enterOperator('*')">*</button>
+      <button class="item item12" (click)="enterNumber('1')">1</button>
+      <button class="item item13" (click)="enterNumber('2')">2</button>
+      <button class="item item14" (click)="enterNumber('3')">3</button>
+      <button class="item item15" (click)="enterOperator('/')">/</button>
+      <button class="item item16" (click)="enterNumber('0')">0</button>
+      <button class="item item17" (click)="enterNumber('00')">00</button>
+      <button class="item item18" (click)="enterOperator('.')">.</button>
+      <button class="item item19" (click)="enterOperator('=')">=</button>
+    </div>
+  </div>
+</div> -->
+<div class="container">
+  <h1>Máy tính bà bán cá gần nhà Huy</h1>
+  <div class="calculator dark">
+    <div class="theme-toggler active" (click)="toggleDarkMode()">
+      <i class="toggler-icon"></i>
+    </div>
+    <div class="display-screen">
+      <div id="display">
+        <span>{{ somenumber.currentNumber }}</span>
+        <span>{{ somenumber.operator }}</span>
+        <span>{{ somenumber.previousNumber }}</span>
+        <span>{{ somenumber.result }}</span>
+      </div>
+    </div>
+    <div class="buttons">
+      <table>
+        <tr>
+          <td>
+            <button class="btn-operator" (click)="clear()">C</button>
+          </td>
+          <td>
+            <button class="btn-operator" id="/" (click)="enterNumber('/')">
+              &divide;
+            </button>
+          </td>
+          <td>
+            <button class="btn-operator" (click)="enterNumber('*')">
+              &times;
+            </button>
+          </td>
+          <td>
+            <button class="btn-operator" id="backspace" (click)="delNumber()">
+              DEL
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="btn-number" (click)="enterNumber('7')">7</button>
+          </td>
+          <td>
+            <button class="btn-number" (click)="enterNumber('8')">8</button>
+          </td>
+          <td>
+            <button class="btn-number" (click)="enterNumber('9')">9</button>
+          </td>
+          <td>
+            <button class="btn-operator" id="-" (click)="enterNumber('-')">
+              -
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="btn-number" (click)="enterNumber('4')">4</button>
+          </td>
+          <td>
+            <button class="btn-number" (click)="enterNumber('5')">5</button>
+          </td>
+          <td>
+            <button class="btn-number" (click)="enterNumber('6')">6</button>
+          </td>
+          <td>
+            <button class="btn-operator" id="+" (click)="enterNumber('+')">
+              +
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="btn-number" (click)="enterNumber('1')">1</button>
+          </td>
+          <td>
+            <button class="btn-number" id="2" (click)="enterNumber('2')">
+              2
+            </button>
+          </td>
+          <td>
+            <button class="btn-number" id="3" (click)="enterNumber('3')">
+              3
+            </button>
+          </td>
+          <td rowspan="2">
+            <button class="btn-equal" id="equal" (click)="getAnswer()">
+              =
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="btn-operator" id="(" (click)="enterNumber('.')">
+              .
+            </button>
+          </td>
+          <td>
+            <button class="btn-number" (click)="enterNumber('0')">0</button>
+          </td>
+          <td>
+            <button class="btn-number" (click)="enterNumber('00')">00</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

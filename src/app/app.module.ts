@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { CaculatorComponent } from './components/caculator/caculator.component';
 import { caculatorReducer } from '../app/reducers/caculator.reducer';
+import { CalculatortsComponent } from './components/calculatorts/calculatorts.component';
 @NgModule({
   declarations: [
     AppComponent,
-    CaculatorComponent
+    CaculatorComponent,
+    CalculatortsComponent
   ],
   imports: [
     BrowserModule,
