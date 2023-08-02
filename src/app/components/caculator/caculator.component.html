@@ -1,14 +1,14 @@
 <div id="suppercontainer">
   <div id="container">
     <div class="screen">
-      <span class="overlay">{{ result }}</span>
-      <span class="input">{{ currentNumber }}</span>
-      <span class="input">{{ operator }}</span>
-      <span class="input">{{ previousNumber }}</span>
+      <span>{{ currentNumber }}</span>
+      <span>{{ operator }}</span>
+      <span>{{ previousNumber }}</span>
+      <span>{{ result }}</span>
     </div>
     <div class="keyboard">
       <button class="item item1" (click)="enterOperator('AC')">AC</button>
-      <button class="item item2">DEL</button>
+      <button class="item item2" (click)="enterOperator('DEL')">DEL</button>
       <button class="item item3" (click)="enterOperator('+')">+</button>
       <button class="item item4" (click)="enterNumber('7')">7</button>
       <button class="item item5" (click)="enterNumber('8')">8</button>
@@ -25,7 +25,7 @@
       <button class="item item16" (click)="enterNumber('0')">0</button>
       <button class="item item17" (click)="enterNumber('00')">00</button>
       <button class="item item18" (click)="enterOperator('.')">.</button>
-      <button class="item item19">=</button>
+      <button class="item item19" (click)="enterOperator('=')">=</button>
     </div>
   </div>
 </div>

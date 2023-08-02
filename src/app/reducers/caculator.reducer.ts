@@ -14,72 +14,91 @@ export const initialState: SomeNumber = {
     currentNumber: '0',
     previousNumber: '0',
     operator: '',
-    result: ''
+    result: '',
 }
 
 export const caculatorReducer = createReducer(
     initialState,
     on(CreateActions.enterNumber, (state, { number }) => {
-        if (state.operator == '') {
-          return {
-            ...state,
-            currentNumber: state.currentNumber == '0' ? number : state.currentNumber + number,
-          };
-        } {
-            
-          return {
-            ...state,
-            previousNumber: state.currentNumber,
-            currentNumber: number ,
-          };
+        let currentNumber;
+        if (state.currentNumber == '0') {
+          currentNumber = number;
           
-        }
         
-       
-      }),
-
-    on(CreateActions.enterOperator, (state, { operator }) => { if (state.operator != '' && state.currentNumber != '0') {
-        const result = calculate(state.previousNumber, state.currentNumber, state.operator);
+        } else {
+          currentNumber = state.currentNumber + number;
+        }
         return {
-          ...state,
-          operator,
-          previousNumber : '0',
-          currentNumber:  result.toString(),
-         
-        };
-      } else {
-        return {
-          ...state,
-          operator,
-        };
-      }
+            ...state,
+            currentNumber,
+      // When a number is entered, update the currentNumber and reset the result
+      
+        
+      };
     }),
   
-
-   
-);
-function calculate(currentNumber: string, previousNumber: string, operator: string): string {
-    const numA = parseFloat(currentNumber);
-  const numB = parseFloat(previousNumber);
-  let result: number;
-  switch (operator) {
-    case '+':
-      result = numA + numB;
-      break;
-    case '-':
-      result = numA - numB;
-      break;
-    case '*':
-      result = numA * numB;
-      break;
-    case '/':
-      result = numB !== 0 ? numA / numB : NaN;
-      break;
-    default:
-      result = NaN;
-  }
-
-  return result.toString();
-    // Chưa triển khai tính toán, trả về thông báo lỗi
-  }
+    on(CreateActions.enterOperator, (state, { operator }) => {
+       
+       
+        let result = 0;
+    
+       
+    
+        if (operator == '%') {
+          return {
+            ...state,
+            currentNumber: (parseFloat(state.currentNumber) / 100).toString(),
+          };
+        }
+    
+        if (operator == 'AC') {
+          return {
+            ...state,
+            currentNumber: '0',
+            previousNumber: '0',
+            operator: '',
+          };
+        }
+    
+        if (operator == 'DEL') {
+          return {
+            ...state,
+            currentNumber: state.currentNumber.slice(0, state.currentNumber.length - 1),
+          };
+        }
+    
+        if (operator == '=') {
+            switch (state.operator) {
+              case '+':
+                result = parseFloat(state.previousNumber) + parseFloat(state.currentNumber);
+                break;
+              case '-':
+                result = parseFloat(state.previousNumber) - parseFloat(state.currentNumber);
+                break;
+              case '*':
+                result = parseFloat(state.previousNumber) * parseFloat(state.currentNumber);
+                break;
+              case '/':
+                result = parseFloat(state.previousNumber) / parseFloat(state.currentNumber);
+                break;
+              default:
+                break;
+            }
+      
+            return {
+              ...state,
+              currentNumber: result.toString(),
+            };
+          } else {
+            return {
+              ...state,
+              previousNumber: state.currentNumber,
+              currentNumber: '0',
+              operator: operator,
+            };
+          }
+          
+      }),
+      
+  );
 

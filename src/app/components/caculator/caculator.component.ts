@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SomeNumber } from 'src/app/module/somenumber';
+
 import * as CreateActions from '../../actions/caculator.action'
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CounterState } from 'src/app/module/counter';
+
 
 @Component({
   selector: 'app-caculator',
