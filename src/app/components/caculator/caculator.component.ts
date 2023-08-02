@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 
 import * as CreateActions from '../../actions/caculator.action'
 import { Store } from '@ngrx/store';
@@ -15,8 +15,9 @@ export class CaculatorComponent implements OnInit {
   operator: string = "";
   previousNumber : string = "";
   result: string  = '';
+  isDark: boolean = true; 
 
-  constructor(private store: Store<{ caculator: { currentNumber: string, operator: string, previousNumber : string, result: string } }>) {
+  constructor(private renderer: Renderer2, private el: ElementRef,private store: Store<{ caculator: { currentNumber: string, operator: string, previousNumber : string, result: string } }>) {
     this.store.select('caculator').subscribe((state) => {
       this.currentNumber = state.currentNumber;
       this.previousNumber = state.previousNumber;
@@ -29,6 +30,7 @@ export class CaculatorComponent implements OnInit {
    
   }
   ngOnInit(): void {
+    
   }
 
   enterNumber(number: string) {
@@ -37,6 +39,20 @@ export class CaculatorComponent implements OnInit {
 
   enterOperator(operator: string) {
     this.store.dispatch(CreateActions.enterOperator({ operator : operator}));
+  }
+  toggleDarkMode() {
+    const calculator = this.el.nativeElement.querySelector(".calculator");
+    const themeToggleBtn = this.el.nativeElement.querySelector(".theme-toggler");
+
+    if (this.isDark) {
+      calculator.classList.add("dark");
+      themeToggleBtn.classList.add("active");
+    } else {
+      calculator.classList.remove("dark");
+      themeToggleBtn.classList.remove("active");
+    }
+
+    this.isDark = !this.isDark;
   }
   
 }
